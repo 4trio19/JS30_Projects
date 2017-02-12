@@ -10,6 +10,7 @@ var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var del = require('del');
 var runSequence = require('run-sequence');
+var babel = require('gulp-babel');
 // End Required Modules
 
 gulp.task('build', function (callback) {
@@ -55,6 +56,9 @@ gulp.task('sass', function() {
 gulp.task('useref', function(){
   return gulp.src('app/*.html')
     .pipe(useref())
+    .pipe(gulpIf('*.js',(babel({
+            presets: ['es2015']
+        }))))
     .pipe(gulpIf('*.js', uglify()))
     // Minifies only if it's a CSS file
     .pipe(gulpIf('*.css', cssnano()))

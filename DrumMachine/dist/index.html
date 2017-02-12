@@ -6,7 +6,7 @@
 
   <link rel="stylesheet" href="css/styles.min.css">
 
-  <script src="js/main.min.js"></script>
+
 
 
 </head>
@@ -61,28 +61,7 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
-  function playAudio(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    if (!audio) {
-      return;
-    }
-  audio.currentTime=0;
-  audio.play();
-  console.log(e.keyCode);
-  key.classList.toggle('playing');
-  };
-  function removeTransition(e){
-    if (e.propertyName !== 'transform') return;
-    this.classList.remove('playing');
-  };
-
-  const keys = document.querySelectorAll('.key');
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-
-  window.addEventListener("keydown", playAudio);
-</script>
+  <script src="js/main.min.js"></script>
 
 
 </body>
