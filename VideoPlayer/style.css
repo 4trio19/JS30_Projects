@@ -16,6 +16,19 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   align-items: center;
   justify-content: center;
 }
+h1 {
+  font-size: 2em;
+  font-family: Helvetica, Arial;
+  text-transform: uppercase;
+}
+
+.project_info {
+  background: #92089c;
+  color: white;
+  padding: 20px 10px;
+  margin-left: 20px;
+  max-width: 200px;
+}
 
 .player {
   max-width:750px;
@@ -100,7 +113,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   width:50%;
   background:#92089c;
   flex:0;
-  flex-basis:50%;
+  flex-basis:0;
 }
 
 /* unholy css to style input type="range" */

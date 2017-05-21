@@ -23,7 +23,6 @@ function togglePlay (e){
 
 function toggleIcon (e) {
   e.preventDefault();
-  console.dir(this);
   let icon;
   if (!this.paused) {
      icon = "❚ ❚"
@@ -43,6 +42,17 @@ function handleRangeUpdate (e) {
   video[this.name] = this.value;
 }
 
+function handleProgress (e) {
+  const percent = (video.currentTime/video.duration) * 100;
+  progressBar.style.flexBasis = `${percent}%`;
+}
+
+function scrub (e) {
+  const scrubTime = (e.offsetX/progress.offsetWidth) * video.duration;
+  video.currentTime = scrubTime;
+}
+
+
 //Attach elements to listeners
 video.addEventListener('click', togglePlay);
 video.addEventListener('pause', toggleIcon);
@@ -54,5 +64,12 @@ skipButtons.forEach (skip => {
 ranges.forEach(range => {
   range.addEventListener('change', handleRangeUpdate);
 });
+video.addEventListener('timeupdate', handleProgress);
+let mousedown = false;
+progress.addEventListener('click', scrub);
+progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
+progress.addEventListener('mousedown', () => mousedown = true);
+progress.addEventListener('mouseup', () => mousedown = false);
+
 
 // ► ❚ ❚
